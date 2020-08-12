@@ -12,18 +12,15 @@ class CupomService extends Apiservice {
 
     buscarPorSituacao(cupomSituacao){
         let params = `/buscar/?situacao=${cupomSituacao}`;
-        console.log(cupomSituacao);
         return this.get(params);
     }
 
     buscarPorData(cupomData){
         let params = `/buscar/expiracao/?data1=${cupomData.data1}&data2=${cupomData.data2}`;
-        console.log(cupomData.data1, cupomData.data2);
         return this.get(params);
     }
 
     deletarCupom(id){
-        console.log(id);
         return this.delete(`/${id}`);
     }
 

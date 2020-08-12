@@ -33,10 +33,8 @@ class CupomCriar extends React.Component {
         if(params.id){
             this.service.buscarPorId(params.id)
             .then(response => {
-                console.log(response);
                 this.setState({...response.data, atualizando: true});
             }).catch(error => {
-                console.log(error);
             })
         }
     }
@@ -93,12 +91,9 @@ class CupomCriar extends React.Component {
             dataExpiracao: this.state.dataExpiracao,
             dataUso: this.state.dataUso,
         }).then( response => {
-            this.props.history.push('/situacao');
+            this.props.history.push('/home');
             mensagemSucesso('Cupom Atualizado com Sucesso');
-            console.log(response);
         }).catch( erro => {
-            console.log(erro.response);
-            console.log(erro.response.data.errors[0].message);
             mensagemErro(erro.response.data.msg);
         });
     }

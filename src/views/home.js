@@ -5,6 +5,7 @@ import Card from '../components/card';
 import CuponsTable from './cupons/CuponsTable';
 
 import CupomService from '../app/services/cupomService';
+import { mensagemErro, mensagemSucesso } from '../components/toastr';
 
 class Home extends React.Component {
 
@@ -27,7 +28,6 @@ class Home extends React.Component {
     }
 
     editar = (id) => {
-        console.log(id);
         this.props.history.push(`/cadastro-cupom/${id}`);
     }
 
@@ -38,9 +38,10 @@ class Home extends React.Component {
             const index = cupons.indexOf(cupom);
             cupons.splice(index, 1);
             this.setState(cupons);
-            console.log("Cupom Deletado");
+            mensagemSucesso('Cupom Deletado com Sucesso');
         }).catch(error => {
             console.log(error);
+            mensagemErro("Não foi possivel deletar o cupom");
         });
     }
 
